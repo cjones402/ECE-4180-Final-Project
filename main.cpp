@@ -11,7 +11,7 @@ Motor right_motor(p22,p7,p8);
 
 DigitalOut speaker(p10);
 
-Servo blade(p26);
+Servo dump(p26);
 
 DigitalOut LEDA(p23);
 DigitalOut LEDB(p24);
@@ -78,12 +78,12 @@ int main()
 {
     Thread t1(thread1); //start thread1
     mu.startUpdates();//start measuring the distance
-    float blade_servo = 1.0;
+    float dump_servo = 1.0;
     float forward_value = 0.0;
     audio_sampletick.attach(&Alert,1.6);
     //lidar_sampletick.attach(&WallStop, 0.1);
     char bnum=0;
-    blade = 0.5;
+    dump = 0.5;
 
     while(1) {
         if (blue.getc()=='!') {
@@ -92,14 +92,14 @@ int main()
                 if (blue.getc()=='1') { //1=hit, 0=release
                     switch (bnum) {
                         case '1': //number button 1
-                            blade_servo = blade_servo - 0.125;
-                            if (blade_servo <= 0.0)
-                                blade_servo = 0.0;
+                            dump_servo = dump_servo - 0.125;
+                            if (dump_servo <= 0.0)
+                                dump_servo = 0.0;
                             break;
                         case '2': //number button 2
-                            blade_servo = blade_servo + 0.125;
-                            if (blade_servo >= 1.0)
-                                blade_servo = 1.0;
+                            dump_servo = dump_servo + 0.125;
+                            if (dump_servo >= 1.0)
+                                dump_servo = 1.0;
                             break;
                         case '3': //number button 3
                             LEDA = !LEDA;
@@ -147,7 +147,7 @@ int main()
                         default:
                             break;
                     }
-                    blade = blade_servo;
+                    dump = dump_servo;
                     blue.getc();
                 }
             }
