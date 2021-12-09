@@ -35,6 +35,7 @@ DigitalOut LEDB(p24);
 #### Piezo Buzzer
 
 The Piezo Buzzer is wired as a digital out, just like the LEDs are. The wiring is as follows:
+
 | Signal      | Pin Location |
 | ----------- | ----------- |
 | Speaker      | P10       |
@@ -74,6 +75,7 @@ The sound boolean is set in the switch statement used for the UART. That will be
 This is the most important device in the project, since this controls whether or not the device can move through user control. Using Adafruit's UART friend and the Bluefruit Connect app, the dumptruck can be controlled from a smartphone by sending data to the Mbed using a serial interface. 
 
 To wire this device:
+
 | Signal      | UART  | Mbed |
 | ----------- | ----------- | ----------- |
 | VCC (6 V)     | Vin (UART) | |
@@ -139,6 +141,7 @@ This code segment is very long, but it showcases how the UART is used to gather 
 
 #### H-Bridge and DC Motors
 The H-Bridge is a device used to control two DC motors and allow them to go forward and reverse. The device takes a VM for the motors, control signals for both motors, and PWM signals to control both. Wiring guide for the dumptruck is below:
+
 | Signal      | H-Bridge  | Mbed | Motor |
 | ----------- | ----------- | ----------- | ----------- | 
 | VCC (6 V)     | VM | | |
@@ -181,6 +184,7 @@ https://user-images.githubusercontent.com/90974583/145326621-d6ce1a70-9c84-4928-
 
 #### Servo Motor and Dump Bed
 Speaking of motors, a servo motor is used to control the dump bed of the dumptruck. A servo motor requires power, gnd, and a control signal. Wiring guide is below: 
+
 | Signal      | Pin Location |
 | ----------- | ----------- |
 | 6 V      | VCC       |
