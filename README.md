@@ -1,5 +1,5 @@
 # ECE-4180-Final-Project
-#### By Christopher Jones and Lucas Baxley - Fall 2021
+#### By Christopher Jones and Brett Baxley - Fall 2021
 
 For our Final Project, the team chose to take a Tonka Truck and add an RC component to it. Using the UART and robot parts from the 4180 kit, the team was able to design and create an RC dumptruck with a working dumping mechanism, a sonar distance detector, and working LED headlights while allowing for motion.
 
@@ -208,3 +208,4 @@ dump = 0.5;
 Below is a video of the servo and dump bed working during testing.
 https://user-images.githubusercontent.com/90974583/145327727-fb6ece44-bec5-4a41-a59f-6a12987fc13b.mp4
 
+####
