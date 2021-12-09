@@ -62,3 +62,23 @@ void Alert()
 }
 ```
 The sound boolean is set in the switch statement used for the UART. That will be examined shortly. 
+
+#### Adafruit UART Friend - Bluetooth Module
+
+This is the most important device in the project, since this controls whether or not the device can move through user control. Using Adafruit's UART friend and the Bluefruit Connect app, the dumptruck can be controlled from a smartphone by sending data to the Mbed using a serial interface. 
+
+To wire this device:
+| Signal      | UART Location | Mbed Location |
+| ----------- | ----------- |
+| VCC (6 V)     | Vin (UART) | |
+| GND   | CTS        | GND |
+| Serial RX   | TX0  | P13 |
+| Serial TX   | RXI  | P14 |
+| GND | GND | GND |
+
+Once wired, a Serial object is created to receive data from the Bluefruit App. 
+``` cpp
+Serial blue(p13,p14);
+```
+
+Next, this data is read of the serial interface. The getc() function is used. However, getc() is blocking. The buttons used on the device are then configured to run until a new one is pressed if data is changed. In order to gather this data, multiple getc()'s are used to get the new command '!', then 'B', and the case '1' or '0' for hit or release. The code for the buttons is only using a hit. The code below includes a lot of code examined later, but shows the general flow of the program as it receives data.
