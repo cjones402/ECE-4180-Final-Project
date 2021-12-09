@@ -130,3 +130,24 @@ while(1)
 ```
 
 This code segment is very long, but it showcases how the UART is used to gather data using getc() and select each case. Next up is the H-Bridge and the 2 DC motors that drive the device.
+
+#### H-Bridge and DC Motors
+The H-Bridge is a device used to control two DC motors and allow them to go forward and reverse. The device takes a VM for the motors, control signals for both motors, and PWM signals to control both. Wiring guide for the dumptruck is below:
+| Signal      | H-Bridge  | Mbed | Motor |
+| ----------- | ----------- | ----------- | ----------- | 
+| VCC (6 V)     | VM | | |
+| Vin   | Vcc        | Vout (3.3 V) | |
+| /STBY   | Logic High  | Vout | |
+| PWMA   | PWMA  | P21 | | 
+| PWMB   | PWMB  | P22 | |
+| AIN1   | AIN1  | P5 | |
+| AIN2   | AIN2  | P6 | |
+| BIN1   | BIN1  | P7 | |
+| BIN2   | BIN2  | P8 | | 
+| AO1   | AO1  | | Motor A + Lead|
+| AO2   | AO2  | | Motor A - Lead|
+| BO1   | BO1  | P22 | Motor B + Lead|
+| BO2   | BO2  | P22 | Motor B - Lead|
+| GND | GND | GND | GND|
+
+That is a lot of wiring for an H-Bridge. The PWM outputs are controlling the movement with an efficient PWM signal. AIN1/AIN2 and the B motor counterpart are controls for forward and reverse. 
