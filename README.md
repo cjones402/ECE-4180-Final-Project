@@ -61,6 +61,12 @@ void Alert()
     }
 }
 ```
+
+In main, you would then attach the ticker with the Alert function and the time interval:
+```cpp
+audio_sampletick.attach(&Alert,1.6);
+```    
+
 The sound boolean is set in the switch statement used for the UART. That will be examined shortly. 
 
 #### Adafruit UART Friend - Bluetooth Module
@@ -151,3 +157,23 @@ The H-Bridge is a device used to control two DC motors and allow them to go forw
 | GND | GND | GND | GND|
 
 That is a lot of wiring for an H-Bridge. The PWM outputs are controlling the movement with an efficient PWM signal. AIN1/AIN2 and the B motor counterpart are controls for forward and reverse. 
+
+
+
+In order to code this, you can include a special "Motor.h" header file to easily create motors and pass the values (-1 to +1) to control the speed and forward/reverse. For example, 
+``` cpp
+#include "Motor.h"
+// Setting up left and right DC motors
+Motor left_motor(p21,p5,p6);
+Motor right_motor(p22,p7,p8);
+```
+
+Now, if you wanted the motors to move forward, you would write
+```cpp
+float forward_value = 1.0;
+left_motor.speed(forward_value);
+right_motor.speed(forward_value);
+```
+In each case statement 5 - 8, different motor speeds are used to control forwards (1.0 on both), backwards (-1.0 on both), left (1.0 on right, 0.4 on left), and right (1.0 on left, 0.4 on right). 
+
+Below is a video of the mechanism moving forward using the H-Bridge and the Mbed.
