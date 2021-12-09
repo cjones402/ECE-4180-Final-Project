@@ -157,8 +157,7 @@ The H-Bridge is a device used to control two DC motors and allow them to go forw
 | GND | GND | GND | GND|
 
 That is a lot of wiring for an H-Bridge. The PWM outputs are controlling the movement with an efficient PWM signal. AIN1/AIN2 and the B motor counterpart are controls for forward and reverse. 
-
-
+![Motor Photo] (IMG_20211130_170027_01.jpg)
 
 In order to code this, you can include a special "Motor.h" header file to easily create motors and pass the values (-1 to +1) to control the speed and forward/reverse. For example, 
 ``` cpp
