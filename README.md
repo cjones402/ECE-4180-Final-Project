@@ -58,7 +58,6 @@ void Alert()
         wait(1);
         speaker = 0.0;
         wait(0.5);
-        //sound = false;
     }
 }
 ```
