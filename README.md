@@ -253,7 +253,7 @@ void dist(int distance)
     //put code here to execute when the distance has changed
     printf("Distance %d mm\r\n", distance);
     if (distance < 200) {
-        printf("Distance is less than 100");
+        printf("Distance is less than 200");
         moveForward = false;
         left_motor.speed(0.0);
         right_motor.speed(0.0);
