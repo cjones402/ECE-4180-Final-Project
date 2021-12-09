@@ -31,7 +31,6 @@ DigitalOut LEDA(p23);
 DigitalOut LEDB(p24);
 ```
 
-
 #### Piezo Buzzer
 
 The Piezo Buzzer is wired as a digital out, just like the LEDs are. The wiring is as follows:
@@ -264,3 +263,11 @@ void dist(int distance)
 ```
 
 If the distance is less than 200 mm, you set the motor speed to 0 and not allow forward movement. The user can then turn the dumptruck left or right, or move backwards to then move forward again. 
+
+### Putting it All Together
+
+After connecting the battery packs and all the devices together, the dumptruck is ready to work together. In the "main.cpp" file in this repository, the source code for the bot is available to look at. 
+
+// VIDEO LINK GOES HERE
+
+Overall, this project was a fun experience and very challenging to fix design issues and debug some errors, but it came out well. 
