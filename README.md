@@ -277,6 +277,6 @@ If the distance is less than 200 mm, you set the motor speed to 0 and not allow 
 
 After connecting the battery packs and all the devices together, the dumptruck is ready to work together. In the "main.cpp" file in this repository, the source code for the bot is available to look at. A final video of all the parts working together is below.
 
-// TODO: VIDEO LINK GOES HERE //
+https://www.youtube.com/watch?v=JYzZakgWQ1M
 
 Overall, this project was a fun experience and very challenging to fix design issues and debug some errors, but it came out well. 
