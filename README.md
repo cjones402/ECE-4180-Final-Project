@@ -1,4 +1,4 @@
-# ECE-4180-Final-Project
+# ECE 4180 Final Project: The Dump Bumpster
 #### By Christopher Jones and Brett Baxley - Fall 2021
 
 ### Github Link: https://github.com/cjones402/ECE-4180-Final-Project
