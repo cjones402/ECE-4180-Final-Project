@@ -11,10 +11,9 @@ For our Final Project, the team chose to take a Tonka Truck and add an RC compon
 
 For the project to make work, the device must be wired up. Below is a block diagram listing signals sent to each device (Note: Every device in the system shares a common ground).
 
-![Block Diagram](4180_Block_diagram.png)
+![Block Diagram](block_diagram_two.png)
 
-Most of the devices in the system use the 6 V battery back. However, some of the devices additionally use the 4.5 V sent into the Mbed. These include the Piezo Buzzer and the two LED headlights.
-
+All of the devices in the system get power from two 6.0 V battery packs, including the Mbed. The Mbed then sends a 3.3 V signal out to devices that need it.
 Each system is highlighted below with it's wiring guide and code snippets.
 
 #### LED Headlights
