@@ -7,7 +7,7 @@ For our Final Project, the team chose to take a Tonka Truck and add an RC compon
 
 ![Dump Truck](dump_truck_photo.jpg)
 
-### Block Diagram, Software Diagram, and Wiring
+### Block Diagram & Software Diagram
 
 For the project to make work, the device must be wired up. Below is a block diagram listing signals sent to each device (Note: Every device in the system shares a common ground).
 
@@ -19,6 +19,10 @@ Each system is highlighted below with it's wiring guide and code snippets.
 Speaking of code snippets, the code is designed to flow during the while loop. The software flow diagram below illustrates the flow from turning the UART on and receiving data to each input from the datapad.
 
 ![SoftwareDiagram](SoftwareFlow.drawio.png)
+
+### Wiring Diagrams and Code Snippets
+
+Below are tables and code to understand how each hardware element is wired and how the software works on that device.
 
 #### LED Headlights
 
