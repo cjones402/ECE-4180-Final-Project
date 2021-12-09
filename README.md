@@ -208,4 +208,59 @@ dump = 0.5;
 Below is a video of the servo and dump bed working during testing.
 https://user-images.githubusercontent.com/90974583/145327727-fb6ece44-bec5-4a41-a59f-6a12987fc13b.mp4
 
-####
+#### Sonar
+
+With a dumptruck meant for kids, there is a very large possibility of them running it into the wall. However, the team decided they dumptruck should stop and not let the user move forward if the dumptruck is too close. The team used a sonar for this part instead of the ToF sensor, which would have been another good choice. 
+
+However, when attempting to use a Ticker, an issue keeped popping up about the Mbed messing with the ISR. After plenty of trial and error, a final choice was made to RTOS to create a thread for the sonar. 
+
+Wiring the Sonar: 
+
+| Signal      | Pin Location |
+| ----------- | ----------- |
+| 6 V      | VCC       |
+| Trig   | P28        |
+| Echo | P27 | 
+| GND   | GND        |
+
+In order to create a thread, you must include "rtos.h". The library in this code is different than the normal rtos code, since it removes the "error.h" file to work with the new mbed-os. 
+```cpp
+// Outside the main code
+#include "rtos.h"
+// Inside the main() function
+Thread t1(thread1);
+```
+When creating a thread, you pass in a function to run. Main() is one thread that runs continuously, and a second 't1' has been added. 
+
+```cpp
+void thread1(void const *args)
+{
+    ultrasonic mu(p28, p27, .1, 1, &dist);    //Set the trigger pin to D28 and the echo pin to D27
+    //have updates every .1 seconds and a timeout after 1
+    //second, and call dist when the distance changes
+    mu.startUpdates();//start measuring the distance
+    while(true) {
+        mu.checkDistance();
+    }
+}
+```
+
+This function checks the distance every 0.1 seconds and calls a function 'dist' to check the distance. 
+
+```cpp
+void dist(int distance)
+{
+    //put code here to execute when the distance has changed
+    printf("Distance %d mm\r\n", distance);
+    if (distance < 200) {
+        printf("Distance is less than 100");
+        moveForward = false;
+        left_motor.speed(0.0);
+        right_motor.speed(0.0);
+    } else {
+        moveForward = true;
+    }
+}
+```
+
+If the distance is less than 200 mm, you set the motor speed to 0 and not allow forward movement. The user can then turn the dumptruck left or right, or move backwards to then move forward again. 
