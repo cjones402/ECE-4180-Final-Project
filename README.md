@@ -157,7 +157,7 @@ The H-Bridge is a device used to control two DC motors and allow them to go forw
 | GND | GND | GND | GND|
 
 That is a lot of wiring for an H-Bridge. The PWM outputs are controlling the movement with an efficient PWM signal. AIN1/AIN2 and the B motor counterpart are controls for forward and reverse. 
-![Motor Photo] (IMG_20211130_170027_01.jpg)
+![Motor Photo](motor_photo.jpg)
 
 In order to code this, you can include a special "Motor.h" header file to easily create motors and pass the values (-1 to +1) to control the speed and forward/reverse. For example, 
 ``` cpp
@@ -176,3 +176,31 @@ right_motor.speed(forward_value);
 In each case statement 5 - 8, different motor speeds are used to control forwards (1.0 on both), backwards (-1.0 on both), left (1.0 on right, 0.4 on left), and right (1.0 on left, 0.4 on right). 
 
 Below is a video of the mechanism moving forward using the H-Bridge and the Mbed.
+
+https://user-images.githubusercontent.com/90974583/145326621-d6ce1a70-9c84-4928-a9de-dc5e759a64c1.mp4
+
+#### Servo Motor and Dump Bed
+Speaking of motors, a servo motor is used to control the dump bed of the dumptruck. A servo motor requires power, gnd, and a control signal. Wiring guide is below: 
+| Signal      | Pin Location |
+| ----------- | ----------- |
+| 6 V      | VCC       |
+| Control   | P26        |
+| GND   | GND        |
+
+The mechanism, however, for th servo on the dumptruck is not so simple. The mechanism uses a paperclip piece connected to the servo and the dumpbed using pieces of servo plastic. A hole was cut in the back of the dump truck's bed to allow for the movement up and down.
+![IMG9520211130952026279501](https://user-images.githubusercontent.com/90974583/145327389-671ba0d1-614f-4aa3-920d-70a9b1cc8cf2.jpg)
+
+In order to code the servo, a "Servo.h" file can be used to easily control position.
+```cpp
+#include "Servo.h"
+Servo dump(p26);
+```
+
+To control the positioning of the servo, you can set the position using an overloaded '=' operator. 
+```cpp
+// Setting the servo position to halfway
+dump = 0.5;
+```
+Below is a video of the servo and dump bed working during testing.
+https://user-images.githubusercontent.com/90974583/145327727-fb6ece44-bec5-4a41-a59f-6a12987fc13b.mp4
+
