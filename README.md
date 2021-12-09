@@ -68,8 +68,8 @@ The sound boolean is set in the switch statement used for the UART. That will be
 This is the most important device in the project, since this controls whether or not the device can move through user control. Using Adafruit's UART friend and the Bluefruit Connect app, the dumptruck can be controlled from a smartphone by sending data to the Mbed using a serial interface. 
 
 To wire this device:
-| Signal      | UART Location | Mbed Location |
-| ----------- | ----------- |
+| Signal      | UART  | Mbed |
+| ----------- | ----------- | ----------- |
 | VCC (6 V)     | Vin (UART) | |
 | GND   | CTS        | GND |
 | Serial RX   | TX0  | P13 |
@@ -82,3 +82,51 @@ Serial blue(p13,p14);
 ```
 
 Next, this data is read of the serial interface. The getc() function is used. However, getc() is blocking. The buttons used on the device are then configured to run until a new one is pressed if data is changed. In order to gather this data, multiple getc()'s are used to get the new command '!', then 'B', and the case '1' or '0' for hit or release. The code for the buttons is only using a hit. The code below includes a lot of code examined later, but shows the general flow of the program as it receives data.
+
+``` cpp
+while(1) 
+{
+        if (blue.getc()=='!') 
+        {
+            if (blue.getc()=='B') 
+            { 
+                bnum = blue.getc();
+                if (blue.getc()=='1')
+                    switch (bnum) 
+                    {
+                        case '1': // number button 1
+                            // Stuff
+                            break;
+                        case '2': // number button 2
+                            // Some stuff
+                            break;
+                        case '3': // number button 3
+                            LEDA = !LEDA;
+                            LEDB = !LEDB;
+                            break;
+                        case '4': // number button 4
+                            // Some stuff
+                            break;
+                        case '5': // button 5 up arrow
+                            // Stuff
+                            break;
+                        case '6': // button 6 down arrow
+                            // Stuff
+                            break;
+                        case '7': // button 7 left arrow
+                            // More stuff
+                            break;
+                        case '8': // button 8 right arrow
+                            // Stuff
+                            break;
+                        default:
+                            break;
+                    }
+                    blue.getc();
+                }
+            }
+        }
+    }
+```
+
+This code segment is very long, but it showcases how the UART is used to gather data using getc() and select each case. Next up is the H-Bridge and the 2 DC motors that drive the device.
