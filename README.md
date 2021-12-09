@@ -7,7 +7,7 @@ For our Final Project, the team chose to take a Tonka Truck and add an RC compon
 
 ![Dump Truck](dump_truck_photo.jpg)
 
-### Block Diagram and Wiring
+### Block Diagram, Software Diagram, and Wiring
 
 For the project to make work, the device must be wired up. Below is a block diagram listing signals sent to each device (Note: Every device in the system shares a common ground).
 
@@ -15,6 +15,10 @@ For the project to make work, the device must be wired up. Below is a block diag
 
 All of the devices in the system get power from two 6.0 V battery packs, including the Mbed. The motors also get 9V from a third battery pack. The Mbed then sends a 3.3 V signal out to devices that need it.
 Each system is highlighted below with it's wiring guide and code snippets.
+
+Speaking of code snippets, the code is designed to flow during the while loop. The software flow diagram below illustrates the flow from turning the UART on and receiving data to each input from the datapad.
+
+![SoftwareDiagram](SoftwareFlow.drawio.png)
 
 #### LED Headlights
 
