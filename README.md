@@ -11,9 +11,9 @@ For our Final Project, the team chose to take a Tonka Truck and add an RC compon
 
 For the project to make work, the device must be wired up. Below is a block diagram listing signals sent to each device (Note: Every device in the system shares a common ground).
 
-![Block Diagram](block_diagram_two.png)
+![Block Diagram](4180_Block_Diagram.drawio.png)
 
-All of the devices in the system get power from two 6.0 V battery packs, including the Mbed. The Mbed then sends a 3.3 V signal out to devices that need it.
+All of the devices in the system get power from two 6.0 V battery packs, including the Mbed. The motors also get 9V from a third battery pack. The Mbed then sends a 3.3 V signal out to devices that need it.
 Each system is highlighted below with it's wiring guide and code snippets.
 
 #### LED Headlights
